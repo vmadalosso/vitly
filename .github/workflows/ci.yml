@@ -54,3 +54,6 @@ jobs:
 
       - name: Executar script de setup
         run: npm run setup
+
+      - name: Executar testes automatizados com Vitest
+        run: npm run test
