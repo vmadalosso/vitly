@@ -1,0 +1,56 @@
+name: CI Pipeline - Vitly
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: bitnami/postgresql:latest
+        env:
+          POSTGRES_USER: docker
+          POSTGRES_PASSWORD: docker
+          POSTGRES_DB: vitly
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U docker"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+      redis:
+        image: bitnami/redis:latest
+        env:
+          REDIS_PASSWORD: docker
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Checagem do código (compilação TS)
+        run: npx tsc --noEmit
+
+      - name: Executar script de setup
+        run: npm run setup
