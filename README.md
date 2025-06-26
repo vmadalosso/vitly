@@ -82,6 +82,28 @@ Este teste serve como base e poderá ser expandido para incluir testes mais robu
 
 ---
 
+## Como Rodar o Projeto
+
+Siga os passos abaixo para rodar a aplicação localmente:
+
+1. **Clone o repositório:**
+
+```git clone https://github.com/vmadalosso/vitly.git```
+
+2. **Suba os containers da infraestrutura (PostgreSQL, Redis e API) com Docker Compose:**
+
+```docker compose up -d```
+
+3. **Execute o script de setup para criar tabelas e validar conexões:**
+
+```npm run setup```
+
+4. **Execute a aplicação em modo desenvolvimento:**
+
+```npm run dev```
+
+---
+
 ## Conclusão
 
 O projeto Vitly foi desenvolvido e entregue em duas fases:
