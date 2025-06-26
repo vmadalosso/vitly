@@ -19,7 +19,7 @@ O projeto **Vitly** é uma API para encurtamento de URLs desenvolvida em **Node.
 - Infraestrutura baseada em containers para facilitar o deploy.
 - Pipeline de integração contínua para garantir qualidade e automatização.
 
-Foi implementado um teste básico simples como prova de conceito da estrutura de testes, que será expandida em fases futuras para garantir maior cobertura e qualidade do código.
+Foi implementado um teste básico simples como prova de conceito da estrutura de testes, que já serve de base para o projeto e poderá ser expandido conforme necessidade.
 
 ---
 
@@ -34,7 +34,7 @@ O pipeline de Integração Contínua (CI) foi configurado utilizando o **GitHub 
 - Execução do script de setup: rodar o script `setup.ts` para validar parte do funcionamento do backend e conexão com a infraestrutura.
 - **Execução de testes automatizados básicos**, implementados com o Vitest.
 
-No momento, o pipeline inclui apenas um teste simples para garantir o funcionamento da estrutura de testes, e testes mais elaborados serão desenvolvidos e integrados na próxima fase do projeto, com foco em entrega contínua e qualidade de código.
+Atualmente, o pipeline executa um teste simples, garantindo a estabilidade inicial. Testes adicionais e mais abrangentes poderão ser implementados futuramente para aumentar a cobertura e qualidade do código.
 
 ---
 
@@ -44,7 +44,9 @@ Para provisionamento e orquestração inicial da infraestrutura, utilizamos o Do
 
 Este arquivo define os serviços PostgreSQL e Redis, incluindo suas configurações básicas de ambiente e portas.
 
-Na próxima fase do projeto, está planejada a utilização de ferramentas de Infraestrutura como Código mais robustas, como Terraform ou CloudFormation, para automação completa do provisionamento em nuvem, além da containerização e orquestração via Docker e Kubernetes, conforme requisitos da fase 2.
+Além disso, a aplicação está containerizada via Docker, conforme descrito no `Dockerfile` do projeto, e o ambiente pode ser facilmente provisionado com o uso do Docker Compose para orquestração local.
+
+---
 
 ## Seção 2 - Pipeline de Integração Contínua
 
@@ -56,7 +58,9 @@ Na próxima fase do projeto, está planejada a utilização de ferramentas de In
 
 ### b) Implementação de um Pipeline de CI usando GitHub Actions
 
-O pipeline de integração contínua está configurado no arquivo [`.github/workflows/ci.yml`](https://github.com/vmadalosso/vitly/blob/main/.github/workflows/ci.yml) do repositório, que executa as etapas descritas na Seção 1b.
+O pipeline de integração contínua está configurado no arquivo [`.github/workflows/ci.yml`](https://github.com/vmadalosso/vitly/blob/main/.github/workflows/ci.yml) do repositório, executando as etapas descritas na Seção 1b, incluindo a compilação, validação da infraestrutura, e execução de testes automatizados básicos.
+
+---
 
 ## Seção 3 - Scripts de Infraestrutura como Código
 
@@ -64,7 +68,9 @@ O pipeline de integração contínua está configurado no arquivo [`.github/work
 
 Utilizamos o **Docker Compose** para o provisionamento inicial da infraestrutura, configurado no arquivo [`docker-compose.yml`](https://github.com/vmadalosso/vitly/blob/main/docker-compose.yml).
 
-Futuramente, está prevista a adoção de ferramentas de Infraestrutura como Código mais avançadas para maior automação e escalabilidade.
+Scripts adicionais para deploy usando containers foram criados, como o script [`deploy.sh`](https://github.com/vmadalosso/vitly/blob/main/deploy.sh), que automatiza o processo de build e deploy local via Docker.
+
+---
 
 ## Testes Automatizados
 
@@ -72,8 +78,25 @@ Foi criado um teste básico para validar a estrutura inicial de testes utilizand
 
 ```/tests/basic.test.ts ```
 
-Este teste será a base para a implementação de testes mais robustos, que serão integrados nas próximas fases do projeto.
+Este teste serve como base e poderá ser expandido para incluir testes mais robustos, testes de integração e cobertura ampliada conforme novas necessidades surgirem.
+
 ---
+
+## Conclusão
+
+O projeto Vitly foi desenvolvido e entregue em duas fases:
+
+- **Fase 1:** Desenvolvimento da API, configuração do ambiente, integração contínua básica, infraestrutura inicial com Docker Compose.
+
+- **Fase 2:** Expansão para entrega contínua (CD) com pipeline GitHub Actions, containerização completa da aplicação, criação de scripts para deploy, além da base para testes automatizados.
+
+O projeto está funcional, com pipelines automatizados, infraestrutura containerizada e testes básicos. Para próximas etapas ou evolução, sugerem-se:
+
+- Implementação de testes automatizados mais completos, incluindo testes de integração e end-to-end.
+- Uso de orquestração avançada (ex: Kubernetes) para ambientes de produção escaláveis.
+- Implementação de monitoramento e logging (ex: Prometheus, Grafana).
+- Integração de práticas de segurança em pipelines e containers.
+
 Obrigado por acompanhar o projeto Vitly!
 
 Feito com ❤️ & ⏩ por Vitor Madalosso

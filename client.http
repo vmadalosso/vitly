@@ -16,4 +16,4 @@ GET http://localhost:3333/api/metrics
 
 ###
 
-GET http://localhost:3333/rocketseat
+GET http://localhost:3333/google
