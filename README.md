@@ -59,6 +59,7 @@ Na próxima fase do projeto, está planejada a utilização de ferramentas de In
 O pipeline de integração contínua está configurado no arquivo [`.github/workflows/ci.yml`](https://github.com/vmadalosso/vitly/blob/main/.github/workflows/ci.yml) do repositório, que executa as etapas descritas na Seção 1b.
 
 ## Seção 3 - Scripts de Infraestrutura como Código
+
 ### a) Scripts para Provisionamento de Infraestrutura a partir da Ferramenta
 
 Utilizamos o **Docker Compose** para o provisionamento inicial da infraestrutura, configurado no arquivo [`docker-compose.yml`](https://github.com/vmadalosso/vitly/blob/main/docker-compose.yml).
