@@ -1,3 +1,5 @@
 import postgres from 'postgres'
 
-export const sql = postgres('postgressql://docker:docker@localhost:5432/vitly')
+const DATABASE_URL = process.env.POSTGRES_URL || 'postgresql://docker:docker@localhost:5432/vitly'
+
+export const sql = postgres(DATABASE_URL)
